@@ -40,7 +40,7 @@ public class UserServiceImpl implements UserService {
     public Long addUser(User user) throws ServiceException {
         try {
             userDao.addUser(user);
-            return userDao.getLastInsertedId();
+            return user.getId();
         } catch (Exception e) {
             throw ServiceExceptionUtils.handleException(e);
         }

@@ -6,19 +6,17 @@ import com.epam.fitnesstracker.controllers.utils.ValidationUtils;
 import com.epam.fitnesstracker.domain.User;
 import com.epam.fitnesstracker.services.UserService;
 import com.epam.fitnesstracker.services.exceptions.ServiceException;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.net.URI;
 import java.util.List;
 
 @RestController
 @RequestMapping("/users")
 public class UserController {
-
-    private static final Logger LOGGER = LoggerFactory.getLogger(UserController.class);
 
     @Autowired
     private UserService userService;
@@ -45,9 +43,11 @@ public class UserController {
         return user;
     }
 
-    @PostMapping("/add")
-    public ResponseEntity addUser(@RequestBody User user) throws ServiceException {
+    @PostMapping()
+    public ResponseEntity addUser(@RequestBody User user) throws BadRequestException, ServiceException {
+        ValidationUtils.validateUser(user);
         Long userId = userService.addUser(user);
-        return ResponseEntity.ok(userId);
+        URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(user.getId()).toUri();
+        return ResponseEntity.created(location).body(user);
     }
 }
