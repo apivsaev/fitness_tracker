@@ -5,6 +5,9 @@ import com.epam.fitnesstracker.domain.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * Utility class to perform validation of request parameters.
+ */
 public class ValidationUtils {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(ValidationUtils.class);

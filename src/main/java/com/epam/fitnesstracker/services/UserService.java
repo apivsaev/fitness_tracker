@@ -7,9 +7,13 @@ import java.util.List;
 
 public interface UserService {
 
-    List<User> getUsers() throws ServiceException;
+    List<User> get() throws ServiceException;
 
     User getById(Long id) throws ServiceException;
 
-    Long addUser(User user) throws ServiceException;
+    Long add(User user) throws ServiceException;
+
+    Integer delete(Long id) throws ServiceException;
+
+    Integer update(User user) throws ServiceException;
 }

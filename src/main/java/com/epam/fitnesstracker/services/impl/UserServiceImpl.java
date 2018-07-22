@@ -19,9 +19,9 @@ public class UserServiceImpl implements UserService {
     private UserDao userDao;
 
     @Override
-    public List<User> getUsers() throws ServiceException {
+    public List<User> get() throws ServiceException {
         try {
-            return userDao.getUsers();
+            return userDao.get();
         } catch (Exception e) {
             throw ServiceExceptionUtils.handleException(e);
         }
@@ -37,10 +37,28 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Long addUser(User user) throws ServiceException {
+    public Long add(User user) throws ServiceException {
         try {
-            userDao.addUser(user);
+            userDao.add(user);
             return user.getId();
+        } catch (Exception e) {
+            throw ServiceExceptionUtils.handleException(e);
+        }
+    }
+
+    @Override
+    public Integer delete(Long id) throws ServiceException {
+        try {
+            return userDao.delete(id);
+        } catch (Exception e) {
+            throw ServiceExceptionUtils.handleException(e);
+        }
+    }
+
+    @Override
+    public Integer update(User user) throws ServiceException {
+        try {
+            return userDao.update(user);
         } catch (Exception e) {
             throw ServiceExceptionUtils.handleException(e);
         }
