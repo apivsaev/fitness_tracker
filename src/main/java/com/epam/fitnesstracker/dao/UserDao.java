@@ -16,7 +16,7 @@ public interface UserDao {
 
     @Insert("insert into user (name, age) values (#{name}, #{age})")
     @Options(useGeneratedKeys = true, keyProperty = "id", keyColumn = "id")
-    Long add(User user);
+    Integer add(User user);
 
     @Delete("delete from user where id = #{id}")
     Integer delete(Long id);

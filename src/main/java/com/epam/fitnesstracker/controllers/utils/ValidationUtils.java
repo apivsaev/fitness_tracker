@@ -1,6 +1,7 @@
 package com.epam.fitnesstracker.controllers.utils;
 
 import com.epam.fitnesstracker.controllers.exceptions.BadRequestException;
+import com.epam.fitnesstracker.domain.Exercise;
 import com.epam.fitnesstracker.domain.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -72,6 +73,12 @@ public class ValidationUtils {
     public static void validateUser(User user) throws BadRequestException {
         if (user.getName() == null || user.getName().isEmpty() || user.getAge() == null) {
             throw new BadRequestException("Incorrect user");
+        }
+    }
+
+    public static void validateExercise(Exercise exercise) throws BadRequestException {
+        if (exercise.getName() == null || exercise.getName().isEmpty()) {
+            throw new BadRequestException("Incorrect exercise");
         }
     }
 }

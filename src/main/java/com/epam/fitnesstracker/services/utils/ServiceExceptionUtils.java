@@ -16,6 +16,8 @@ public class ServiceExceptionUtils {
         LOGGER.error(e.getMessage(), e);
         if (e instanceof DataAccessException) {
             return new ServiceException(ServiceException.DATA_BASE_ERROR, e);
+        } else if (e instanceof ServiceException) {
+            return (ServiceException) e;
         }
 
         return new ServiceException(ServiceException.INTERNAL_SERVER_ERROR, e);

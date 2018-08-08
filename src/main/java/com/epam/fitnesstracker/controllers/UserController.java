@@ -51,7 +51,7 @@ public class UserController {
 
         Long userId = userService.add(user);
 
-        URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(user.getId()).toUri();
+        URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(userId).toUri();
         return ResponseEntity.created(location).body(user);
     }
 
