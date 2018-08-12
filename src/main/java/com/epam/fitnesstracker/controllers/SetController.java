@@ -47,7 +47,6 @@ public class SetController {
     @PutMapping("/{id}")
     public ResponseEntity update(@PathVariable String id, @RequestBody Set set) throws BadRequestException, ServiceException {
         Long setId = ValidationUtils.validateAdnGetLongParam(id, false, "Incorrect set id " + id);
-        ValidationUtils.validateSet(set);
 
         set.setId(setId);
         Integer updatedCount = setService.update(set);

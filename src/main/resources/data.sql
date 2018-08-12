@@ -11,6 +11,7 @@ insert into exercise (name) values ('Bicep curls');
 
 insert into training (date, user_id, calories) values (current_timestamp, 1, 1000);
 insert into training (date, user_id, calories) values (current_timestamp, 2, 2000);
+insert into training (date, user_id, calories) values (current_timestamp, 3, 3000);
 
 insert into set (training_id, exercise_id, repeat, weight) values (1, 1, 5, 80);
 insert into set (training_id, exercise_id, repeat, weight) values (1, 1, 5, 80);
